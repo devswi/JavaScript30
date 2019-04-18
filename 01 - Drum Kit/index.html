@@ -58,14 +58,14 @@
             function playSound(event) {
                 const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
                 const key = document.querySelector(`.key[data-key="${event.keyCode}"]`);
-                if (!audio) return; // 未找到 audio 标签时，return
+                if (!audio || !key) return; // 未找到 audio 标签时，return
                 audio.currentTime = 0;
                 audio.play();
                 key.classList.add('playing');
             }            
 
             function removeTransition(event) {
-                if (!event.propertyName !== 'transform') return; // skip it if it's not a transform 如果不是一个 transform 就忽略它
+                if (event.propertyName !== 'transform') return; // skip it if it's not a transform 如果不是一个 transform 就忽略它
                 this.classList.remove('playing')
             }
             
