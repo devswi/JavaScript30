@@ -27,7 +27,7 @@ array.map(x => x * 2); // 使用箭头函数可以优化代码结构，增强代
 
 ## 音频播放
 
-页面中，通过 `data-key` 将页面元素与 `audio` 绑定起来。`data-key` 属于 `data-*` 一类的自定义属性。[参考资料]([similar](https://html.spec.whatwg.org/dev/dom.html#embedding-custom-non-visible-data-with-the-data-*-attributes))
+页面中，通过 `data-key` 将页面元素与 `audio` 绑定起来。`data-key` 属于 `data-*` 一类的自定义属性。[参考资料](https://html.spec.whatwg.org/dev/dom.html#embedding-custom-non-visible-data-with-the-data-*-attributes)
 
 > Custom data attributes are intended to store custom data, state, annotations, and similar, private to the page or application, for which there are no more appropriate attributes or elements.
 
