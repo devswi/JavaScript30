@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>CSS + JS Clock</title>
+    </head>
+    <body>
+        <div class="clock">
+            <div class="clock-face">
+                <div class="container hours-keyframes">
+                    <div class="hours"></div>
+                </div>
+                <div class="container minutes-keyframes">
+                    <div class="minutes"></div>
+                </div>
+                <div class="container seconds-keyframes">
+                    <div class="seconds"></div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            html {
+                background: #cdcdcd;
+                background-size: cover;
+                font-family: 'helvetica neue';
+                text-align: center;
+                font-size: 10px;
+            }
+
+            body {
+                font-size: 2rem;
+                display: flex;
+                flex: 1;
+                min-height: 100vh;
+                align-items: center;
+            }
+
+            .clock {
+                width: 30rem;
+                height: 30rem;
+                background: #fff url(resource/ios_clock.svg) no-repeat center;
+                background-size: 88%;
+                border-radius: 50%;
+                margin: 50px auto;
+                position: relative;
+                padding: 2rem;
+            }
+
+            .clock::after {
+                background: #000;
+                border-radius: 50%;
+                content: "";
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 5%;
+                height: 5%;
+                z-index: 10;
+            }
+
+            .container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+            }
+
+            .hours {
+                background: #000;
+                height: 20%;
+                left: 48.75%;
+                position: absolute;
+                top: 30%;
+                transform-origin: 50% 100%;
+                width: 2.5%;
+            }
+
+            .minutes {
+                background: #000;
+                height: 40%;
+                left: 49%;
+                position: absolute;
+                top: 10%;
+                transform-origin: 50% 100%;
+                width: 2%;
+            }
+
+            .seconds {
+                background: #000;
+                height: 45%;
+                left: 49.5%;
+                position: absolute;
+                top: 14%;
+                transform-origin: 50% 80%;
+                width: 1%;
+                z-index: 8;
+            }
+
+        </style>
+        <script>
+
+            // Main function
+            (function() {
+                setInterval(setupLocalClocks, 1000);
+            })();
+            
+            function setupLocalClocks() {
+                const date = new Date();
+                const seconds = date.getSeconds();
+                const minutes = date.getMinutes();
+                const hours = date.getHours();
+
+                const hands = [
+                    {
+                        hand: 'hours',
+                        angle: (hours * 30) + (minutes / 2)
+                    },
+                    {
+                        hand: 'minutes',
+                        angle: (minutes * 6) + (seconds / 10)
+                    }, 
+                    {
+                        hand: 'seconds',
+                        angle: seconds * 6
+                    }
+                ];
+                hands.forEach(function(hand) {
+                    const container = document.querySelector(`.${hand.hand}-keyframes`);
+                    if (hand.hand === 'seconds') {
+                        container.style.transition = 'all ' + (hand.angle === 0 ? 0 : 0.2) + 's cubic-bezier(0.4, 2.08, 0.55, .44)';
+                    }
+                    container.style.transform = `rotate(${hand.angle}deg)`;
+                });
+            }
+            
+        </script>
+    </body>
+</html>
