@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Flex Panels 💪</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC" type="text/css">
+    </head>
+    <body>
+        <style>
+            html {
+                box-sizing: border-box;
+                background: #ffc600;
+            }
+
+            body {
+                margin: 0;
+            }
+
+            *, *:before, *:after {
+                box-sizing: inherit;
+            }
+
+            .panels {
+                min-height: 100vh;
+                overflow: hidden;
+                display: flex;
+            }
+
+            .panel {
+                background: #6b0f9c;
+                box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.1);
+                color: white;
+                text-align: center;
+                align-items: center;
+                transition: 
+                    font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+                    flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+                    background 0.2s;
+                font-size: 20px;
+                background-position: center;
+                flex: 1;
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .panel > * {
+                margin: 0;
+                width: 100%;
+                transition: transform 0.5s;
+                flex: 1 0 auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .panel p {
+                text-transform: uppercase;
+                font-family: 'Amatic SC', cursive; /* cursive 手写体 */
+                text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+                font-size: 2em;
+            }
+
+            .panel p:first-child {
+                transform: translateY(-100%);
+            }
+
+            .panel.open-active p:first-child {
+                transform: translateY(0);
+            }
+
+            .panel p:last-child {
+                transform: translateY(100%);
+            }
+
+            .panel.open-active p:last-child {
+                transform: translateY(0);
+            }
+
+            .panel.open {
+                font-size: 2rem;
+                flex: 5;
+            }
+
+            .panel1 { background-image: url(https://source.unsplash.com/wDifg5xc9Z4/1500x1500); }
+            .panel2 { background-image: url(https://source.unsplash.com/cbHtEWXkIdQ/1500x1500); }
+            .panel3 { background-image: url(https://source.unsplash.com/8ckO0asvgq8/1500x1500); }
+            .panel4 { background-image: url(https://source.unsplash.com/9ANOxANXPpE/1500x1500); }
+            .panel5 { background-image: url(https://source.unsplash.com/OiVM2mwykx8/1500x1500); }
+        </style>
+
+        <div class="panels">
+            <div class="panel panel1">
+                <p>Hey</p>
+                <p>Let's</p>
+                <p>Dance</p>
+            </div>
+            <div class="panel panel2">
+                <p>Give</p>
+                <p>Take</p>
+                <p>Receive</p>
+            </div>
+            <div class="panel panel3">
+                <p>Experience</p>
+                <p>It</p>
+                <p>Today</p>
+            </div>
+            <div class="panel panel4">
+                <p>Give</p>
+                <p>All</p>
+                <p>You can</p>
+            </div>
+            <div class="panel panel5">
+                <p>Life</p>
+                <p>In</p>
+                <p>Motion</p>
+            </div>
+        </div>
+
+        <script>
+            const panels = document.querySelectorAll('.panel');
+
+            function toggleOpen() {
+                panels.forEach(panel => panel.classList.remove('open'));
+                this.classList.toggle('open');
+            }
+
+            function toggleOpenActive(event) {
+                if (event.propertyName.includes('flex')) {
+                    this.classList.toggle('open-active');
+                }
+            }
+
+            panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+            panels.forEach(panel => panel.addEventListener('transitionend', toggleOpenActive));
+        </script>
+    </body>
+</html>

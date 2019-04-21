@@ -1,4 +1,4 @@
-# Array Cardio Day 1
+# Day 04 Array Cardio Day 1
 
 这次的练习是 JavaScript 的数组练习。
 
