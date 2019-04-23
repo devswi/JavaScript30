@@ -1,6 +1,6 @@
 # Day 06 Type Ahead
 
-第 6 天的练习，查找含有输入字母的美国城市或者州名。[数据接口](https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json)
+第 6 天的练习，查找含有输入字符的美国城市或者州名。[数据接口](https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json)
 
 ## 技术要点
 
