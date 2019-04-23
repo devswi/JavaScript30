@@ -1,6 +1,6 @@
 # Day 07 Array Cardio Day 2
 
-今天的练习是关于 JavaScript 数组的第二次练习。这次主要涉及 JavaScript 数据的如下 API。
+今天的练习是关于 JavaScript 数组的第二次练习。这次主要涉及 JavaScript 数组的如下 API。
 
  * `Array.prototype.some()`
  * `Array.prototype.every()`
