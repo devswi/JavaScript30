@@ -2,7 +2,7 @@ const people = [
     { name: 'Wes', year: 1988 },
     { name: 'Kait', year: 1986 },
     { name: 'Irv', year: 1970 },
-    { name: 'Lux', year: 2015 }
+    { name: 'Lux', year: 2015 },
 ];
 
 const comments = [
@@ -10,7 +10,7 @@ const comments = [
     { text: 'Super good', id: 823423 },
     { text: 'You are the best', id: 2039842 },
     { text: 'Ramen is my fav food ever', id: 123523 },
-    { text: 'Nice Nice Nice!', id: 542328 }
+    { text: 'Nice Nice Nice!', id: 542328 },
 ];
 
 // Some and Every checks
@@ -37,17 +37,17 @@ console.log(isAnybodyAdult);
 // Array.prototype.find()
 // find() 与 filter() 类似，但只返回符合条件的第一个值
 // 找出 ID 为 823423 的评论
-const comment = comments.find(comment => comment.id === 823423);
+const comment = comments.find(item => item.id === 823423);
 
 console.log(comment);
 
 // Array.prototype.findIndex()
 // 找到并删除 ID 为 823423 的评论
-const index = comments.findIndex(comment => comment.id === 823423);
+const index = comments.findIndex(item => item.id === 823423);
 console.log(index);
 
 const newComments = [
     ...comments.slice(0, index),
-    ...comments.slice(index + 1)
-]
+    ...comments.slice(index + 1),
+];
 console.table(newComments);

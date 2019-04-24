@@ -101,11 +101,6 @@
 
         </style>
         <script>
-
-            // Main function
-            (function() {
-                setInterval(setupLocalClocks, 1000);
-            })();
             
             function setupLocalClocks() {
                 const date = new Date();
@@ -116,26 +111,28 @@
                 const hands = [
                     {
                         hand: 'hours',
-                        angle: (hours * 30) + (minutes / 2)
+                        angle: (hours * 30) + (minutes / 2),
                     },
                     {
                         hand: 'minutes',
-                        angle: (minutes * 6) + (seconds / 10)
-                    }, 
+                        angle: (minutes * 6) + (seconds / 10),
+                    },
                     {
                         hand: 'seconds',
-                        angle: seconds * 6
-                    }
+                        angle: seconds * 6,
+                    },
                 ];
-                hands.forEach(function(hand) {
+                hands.forEach((hand) => {
                     const container = document.querySelector(`.${hand.hand}-keyframes`);
                     if (hand.hand === 'seconds') {
-                        container.style.transition = 'all ' + (hand.angle === 0 ? 0 : 0.2) + 's cubic-bezier(0.4, 2.08, 0.55, .44)';
+                        container.style.transition = `all ${(hand.angle === 0 ? 0 : 0.2)}s cubic-bezier(0.4, 2.08, 0.55, .44)`;
                     }
                     container.style.transform = `rotate(${hand.angle}deg)`;
                 });
             }
-            
+
+            // Main function
+            setInterval(setupLocalClocks, 1000);
         </script>
     </body>
 </html>

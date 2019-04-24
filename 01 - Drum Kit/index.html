@@ -62,18 +62,17 @@
                 audio.currentTime = 0;
                 audio.play();
                 key.classList.add('playing');
-            }            
+            }
 
             function removeTransition(event) {
                 if (event.propertyName !== 'transform') return; // skip it if it's not a transform 如果不是一个 transform 就忽略它
-                this.classList.remove('playing')
+                this.classList.remove('playing');
             }
             
             const keys = document.querySelectorAll('.key');
             keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
             window.addEventListener('keydown', playSound);
-
         </script>
     </body>
 </html>
