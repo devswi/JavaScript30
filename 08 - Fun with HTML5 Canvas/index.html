@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>HTML5 Canvas</title>
+    </head>
+    <body>
+        <canvas id="draw" width="800" height="800"></canvas>
+        <script>
+            const canvas = document.querySelector('#draw');
+            console.log(canvas);
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            // ctx.globalCompositeOperation = 'multiply';
+
+            let isDrawing = false;
+            let lastX = 0;
+            let lastY = 0;
+            let hue = 0
+            let direction = true;
+
+            function draw(e) {
+                if (!isDrawing) return;
+                ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+                ctx.beginPath(); // 开始绘图
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.stroke();
+                ctx.closePath();
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+                // lastX = e.offsetX;
+                // lastY = e.offsetY;
+
+                hue++;
+                if (hue >= 360) {
+                    hue = 0;
+                }
+                
+                if (ctx.lineWidth >= 50 || ctx.lineWidth <= 1) {
+                    direction = !direction;
+                }
+                if (direction) {
+                    ctx.lineWidth++;
+                } else {
+                    ctx.lineWidth--;
+                }
+            }
+
+            canvas.addEventListener('mousemove', draw);
+            
+            // 监听到鼠标按下事件时，isDrawing 置为 true
+            canvas.addEventListener('mousedown', (event) => [isDrawing, lastX, lastY] = [true, event.offsetX, event.offsetY]);
+            // 监听到鼠标松开事件时，isDrawing 置为 false
+            canvas.addEventListener('mouseup', () => isDrawing = false);
+            // 监听到鼠标离开屏幕事件时，isDrawing 置为 false
+            canvas.addEventListener('mouseout', () => isDrawing = false);
+
+        </script>
+        <style>
+            html, body {
+                margin: 0;
+            }
+        </style>
+    </body>
+</html>
