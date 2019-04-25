@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Console Tricks!</title>
+    </head>
+    <body>
+        <p onClick="makeGreen()">xBREAKxDOWNx</p>
+    </body>
+    <script>
+        const dogs = [
+            { name: 'Snickers', age: 2 },
+            { name: 'hugo', age: 8 },
+        ];
+
+        function makeGreen() {
+            const p = document.querySelector('p');
+            p.style.color = '#bada55';
+            p.style.fontSize = '50px';
+        }
+
+        // Regular
+        console.log('hello');
+
+        // Interpolated
+        console.log('Hello I am a %s string!', '😃');
+
+        console.log('%cThis is a string which has different style.', 'color: #00ffff; font-size: 2rem');
+
+        // Warning
+        console.warn('Whoops!');
+
+        // Error
+        console.error('Shit!');
+
+        // Info
+        console.info('OH some information!');
+
+        // Testing
+        console.assert(1 === 2, 'Oh no');
+
+        // Group
+        dogs.forEach(dog => console.log(`${dog.name} is ${dog.age * 2} years old.`));
+
+        dogs.forEach((dog) => {
+            console.group(`${dog.name}`); 
+            console.log(`${dog.name} is ${dog.age * 2} years old.`);
+            console.groupEnd(`${dog.name}`);
+        });
+
+        // Count
+        console.count('Tom');
+        console.count('Jerry');
+        console.count('Tom');
+        console.count('Jerry');
+        console.count('Tom');
+        console.count('Tom');
+        console.count('Tom');
+        console.count('Tom');
+        console.count('Jerry');
+        console.count('Tom');
+
+        // Timing
+        console.time('fetch github data');
+        fetch('https://api.github.com/users/shiwei93')
+            .then(data => data.json())
+            .then((json) => {
+                console.timeEnd('fetch github data');
+                console.log(json);
+            });
+    </script>
+</html>
