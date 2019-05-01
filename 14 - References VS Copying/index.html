@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Reference VS Copy</title>
+</head>
+<body>
+    <script>
+        // strings, numbers and booleans
+        // 值类型
+        let age = 100;
+        let age2 = age;
+        console.log(age, age2);
+        age = 200;
+        console.log(age, age2); 
+        console.clear();
+
+        let name = 'sze';
+        let name2 = name;
+        console.log(name, name2);
+        name = 'wei';
+        console.log(name, name2);
+        
+        // Array
+        // 引用类型
+        const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+
+        const team = players;
+        console.log(players, team);
+        players.push('Sze');
+        console.log(players, team);
+        // 数组的拷贝可以使用 slice() 方法
+        const team2 = players.slice();
+        // Or
+        const team3 = [].concat(players);
+        // Or
+        const team4 = [...players];
+        // Or
+        const team5 = Array.from(players);
+
+        players.push('Sze');
+
+         // Objects
+         // 引用类型
+         const person = {
+             name: 'sze wei',
+             age: 26,
+         };
+
+         // copy person
+         const captain = person;
+         captain.age = 90;
+
+         // Correct
+         const cap2 = Object.assign({}, person, { numebr: 99, age: 12 });
+         console.log(cap2);
+
+         const wes = {
+            name: 'wes',
+            age: 100,
+            social: {
+                twitter: '@wesbos',
+                facebook: 'wesbos.developer'
+            }
+         };
+         console.clear();
+         console.log(wes);
+
+         // 只拷贝了下一级
+         const dev = Object.assign({}, wes);
+
+         // 实现深拷贝
+         // 先转换为 json string 再通过 JSON.parse() 方法讲 json 转换为 object
+         const dev2 = JSON.parse(JSON.stringify(wes));
+
+    </script>
+</body>
+</html>
