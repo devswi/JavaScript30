@@ -20,7 +20,7 @@ const item = {
 };
 ```
 
-上面的代码与下面的代码一样
+上面的代码与下面的代码一样
 
 ``` javascript
 const item = {
