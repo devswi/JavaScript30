@@ -1,6 +1,6 @@
 # Day 17 Sorting Band Names without articles
 
-今天的练习是对数组的排序练习，特别的是需要去除字符串开头的 **a an the** 之后进行排序。
+今天的练习是对数组的排序练习，特别的是需要去除字符串开头的 **a an the** 之后进行排序。
 
 去除 **a an the** 的操作放到了一个 function 里，代码如下 
 
