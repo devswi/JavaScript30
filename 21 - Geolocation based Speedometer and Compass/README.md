@@ -1,4 +1,4 @@
-# Day 21 - Geolocation based Speedometer and Compass
+# Day 21 Geolocation based Speedometer and Compass
 
 [预览](https://htmlpreview.github.io/?https://github.com/shiwei93/JavaScript30/blob/master/21%20-%20Geolocation%20based%20Speedometer%20and%20Compass/index.html)
 
