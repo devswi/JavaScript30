@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event Capture, Propagation, Bubbling and Once</title>
+</head>
+<body class="bod">
+    <div class="one">
+        <div class="two">
+            <div class="three"></div>
+        </div>
+    </div>
+
+    <button class="button"></button>
+
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        div {
+            width: 100%;
+            padding: 100px;
+        }
+
+        .one {
+            background: thistle;
+        }
+
+        .two {
+            background: mistyrose;
+        }
+
+        .three {
+            background: coral;
+        }
+    </style>
+
+    <script>
+        const divs = document.querySelectorAll('div');
+        const one = document.querySelector('.one');
+        const two = document.querySelector('.two');
+        const three = document.querySelector('.three');
+        const button = document.querySelector('button');
+
+        // 先捕获后冒泡
+        one.addEventListener('click', (e) => { 
+            console.log("one capture mode", e.eventPhase);
+            // e.stopPropagation(); // 阻止事件的冒泡，也阻止了事件的继续捕获。无法阻止同一个元素其他绑定事件的执行
+        }, true);
+        one.addEventListener('click', (e) => { 
+            console.log("one bubble mode", e.eventPhase);
+        }, false);
+        two.addEventListener('click', (e) => { 
+            console.log("two capture mode", e.eventPhase);
+            e.stopPropagation();
+            // e.stopImmediatePropagation(); // 阻止了事件的继续传递，也阻止了同一个元素的其他绑定事件的执行
+        }, true);
+        two.addEventListener('click', (e) => {
+            console.log("two capture mode 2");
+        }, true);
+        two.addEventListener('click', (e) => { console.log("two bubble mode", e.eventPhase); }, false);
+        three.addEventListener('click', (e) => { console.log("three capture mode", e.eventPhase); }, true);
+        three.addEventListener('click', (e) => { console.log("three bubble mode", e.eventPhase); }, false);
+
+    </script>
+</body>
+</html>
