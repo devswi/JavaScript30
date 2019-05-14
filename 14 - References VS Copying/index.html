@@ -14,7 +14,7 @@
         let age2 = age;
         console.log(age, age2);
         age = 200;
-        console.log(age, age2); 
+        console.log(age, age2);
         console.clear();
 
         let name = 'sze';
@@ -22,7 +22,7 @@
         console.log(name, name2);
         name = 'wei';
         console.log(name, name2);
-        
+
         // Array
         // 引用类型
         const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
@@ -42,38 +42,38 @@
 
         players.push('Sze');
 
-         // Objects
-         // 引用类型
-         const person = {
-             name: 'sze wei',
-             age: 26,
-         };
+        // Objects
+        // 引用类型
+        const person = {
+            name: 'sze wei',
+            age: 26,
+        };
 
-         // copy person
-         const captain = person;
-         captain.age = 90;
+        // copy person
+        const captain = person;
+        captain.age = 90;
 
-         // Correct
-         const cap2 = Object.assign({}, person, { numebr: 99, age: 12 });
-         console.log(cap2);
+        // Correct
+        const cap2 = Object.assign({}, person, { numebr: 99, age: 12 });
+        console.log(cap2);
 
-         const wes = {
+        const wes = {
             name: 'wes',
             age: 100,
             social: {
                 twitter: '@wesbos',
                 facebook: 'wesbos.developer'
             }
-         };
-         console.clear();
-         console.log(wes);
+        };
+        console.clear();
+        console.log(wes);
 
-         // 只拷贝了下一级
-         const dev = Object.assign({}, wes);
+        // 只拷贝了下一级
+        const dev = Object.assign({}, wes);
 
-         // 实现深拷贝
-         // 先转换为 json string 再通过 JSON.parse() 方法讲 json 转换为 object
-         const dev2 = JSON.parse(JSON.stringify(wes));
+        // 实现深拷贝
+        // 先转换为 json string 再通过 JSON.parse() 方法讲 json 转换为 object
+        const dev2 = JSON.parse(JSON.stringify(wes));
 
     </script>
 </body>
